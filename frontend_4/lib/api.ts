@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-const BASE_API_URL = 'http://localhost:5000/api';
-export const IMG_BASE_URL = 'http://localhost:5000/data/images';
+const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+export const IMG_BASE_URL = process.env.NEXT_PUBLIC_IMG_URL || 'http://localhost:5000/data/images';
 
 export const api = axios.create({
   baseURL: BASE_API_URL,
