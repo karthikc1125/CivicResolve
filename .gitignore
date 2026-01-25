@@ -26,3 +26,17 @@ yolo*.pt
 
 # Keep trained models
 !ai_ml/models/*.pt
+
+# Node.js
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+frontend/build/
+frontend/dist/
+frontend/.next/
+frontend/out/
