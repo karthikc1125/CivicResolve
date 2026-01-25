@@ -3,11 +3,20 @@ Flask>=2.3.0
 Flask-SQLAlchemy>=3.0.0
 Flask-CORS>=4.0.0
 gunicorn>=21.2.0
-ultralytics
+
 python-dotenv>=1.0.0
-# PostgreSQL Database Dependencies  
-# AI/ML TensorFlow Dependencies
-# Image Processing Dependencies
+
+# AI/ML Dependencies
+ultralytics>=8.0.0
+opencv-python-headless>=4.8.0
+torch>=2.0.0
+torchvision>=0.15.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# PostgreSQL Database Dependencies
+psycopg2-binary>=2.9.0
+
 # Utility Dependencies
 requests>=2.31.0
 pyyaml>=6.0
