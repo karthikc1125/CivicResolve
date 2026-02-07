@@ -155,7 +155,7 @@ class IssueValidator:
                 lng = -lng
                 
             return lat, lng
-        except:
+        except Exception:
             return None, None
     
     def _haversine(self, lat1, lon1, lat2, lon2):
