@@ -141,19 +141,25 @@ class IssueValidator:
             for key in gps_info.keys():
                 decode = GPSTAGS.get(key, key)
                 gps[decode] = gps_info[key]
-            
+
             def convert_to_degrees(value):
                 d, m, s = value
                 return d + (m / 60.0) + (s / 3600.0)
-            
-            lat = convert_to_degrees(gps.get('GPSLatitude', (0, 0, 0)))
-            lng = convert_to_degrees(gps.get('GPSLongitude', (0, 0, 0)))
-            
+
+            lat_value = gps.get('GPSLatitude')
+            lng_value = gps.get('GPSLongitude')
+
+            # If either latitude or longitude is missing, GPS is unavailable
+            if not lat_value or not lng_value:
+                return None, None
+
+            lat = convert_to_degrees(lat_value)
+            lng = convert_to_degrees(lng_value)
+
             if gps.get('GPSLatitudeRef') == 'S':
                 lat = -lat
             if gps.get('GPSLongitudeRef') == 'W':
                 lng = -lng
-                
             return lat, lng
         except Exception:
             return None, None
