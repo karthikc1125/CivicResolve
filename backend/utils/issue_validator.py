@@ -210,7 +210,14 @@ class IssueValidator:
     def _verify_civic_content(self, image_path, claimed_type=None):
         """Verify image contains civic infrastructure using YOLO model."""
         if not self.model:
-            self.checks['content'] = {'status': 'skipped', 'note': 'No AI model loaded'}
+            # Penalize when the AI model is not available so that missing
+            # content verification does not silently result in a high score.
+            self.checks['content'] = {
+                'status': 'skipped',
+                'note': 'No AI model loaded'
+            }
+            # Apply a penalty comparable to the "no civic detected" case.
+            self.penalties.append(30)
             return
         
         try:
