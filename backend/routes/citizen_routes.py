@@ -23,7 +23,7 @@ def submit_report():
     save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
     file.save(save_path)
     
-    # --- Validate Report ---
+    # --- Issue Validation ---
     lat = request.form.get('lat', type=float)
     lng = request.form.get('lng', type=float)
     
