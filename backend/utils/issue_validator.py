@@ -108,7 +108,7 @@ class IssueValidator:
                         self.penalties.append(20)
                     else:
                         self.checks['timestamp'] = {'status': 'recent', 'age_hours': age_hours}
-                except:
+                except (ValueError, TypeError):
                     self.checks['timestamp'] = {'status': 'parse_error'}
                     self.penalties.append(5)
             else:
