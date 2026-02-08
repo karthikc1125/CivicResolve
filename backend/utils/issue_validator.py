@@ -108,7 +108,7 @@ class IssueValidator:
                         self.penalties.append(20)
                     else:
                         self.checks['timestamp'] = {'status': 'recent', 'age_hours': age_hours}
-                except:
+                except (ValueError, TypeError):
                     self.checks['timestamp'] = {'status': 'parse_error'}
                     self.penalties.append(5)
             else:
@@ -117,16 +117,16 @@ class IssueValidator:
             
             # Check GPS data
             gps_info = exif.get('GPSInfo')
-            if gps_info and claimed_lat and claimed_lng:
+            if gps_info and claimed_lat is not None and claimed_lng is not None:
                 exif_lat, exif_lng = self._parse_gps(gps_info)
-                if exif_lat and exif_lng:
+                if exif_lat is not None and exif_lng is not None:
                     distance = self._haversine(exif_lat, exif_lng, claimed_lat, claimed_lng)
                     if distance > self.MAX_GPS_DISTANCE_KM:
                         self.checks['gps'] = {'status': 'mismatch', 'distance_km': distance}
                         self.penalties.append(30)
                     else:
                         self.checks['gps'] = {'status': 'match', 'distance_km': distance}
-            elif claimed_lat and claimed_lng:
+            elif claimed_lat is not None and claimed_lng is not None:
                 self.checks['gps'] = {'status': 'no_exif_gps'}
                 self.penalties.append(10)
                 
@@ -141,21 +141,27 @@ class IssueValidator:
             for key in gps_info.keys():
                 decode = GPSTAGS.get(key, key)
                 gps[decode] = gps_info[key]
-            
+
             def convert_to_degrees(value):
                 d, m, s = value
                 return d + (m / 60.0) + (s / 3600.0)
-            
-            lat = convert_to_degrees(gps.get('GPSLatitude', (0, 0, 0)))
-            lng = convert_to_degrees(gps.get('GPSLongitude', (0, 0, 0)))
-            
+
+            lat_value = gps.get('GPSLatitude')
+            lng_value = gps.get('GPSLongitude')
+
+            # If either latitude or longitude is missing, GPS is unavailable
+            if not lat_value or not lng_value:
+                return None, None
+
+            lat = convert_to_degrees(lat_value)
+            lng = convert_to_degrees(lng_value)
+
             if gps.get('GPSLatitudeRef') == 'S':
                 lat = -lat
             if gps.get('GPSLongitudeRef') == 'W':
                 lng = -lng
-                
             return lat, lng
-        except:
+        except Exception:
             return None, None
     
     def _haversine(self, lat1, lon1, lat2, lon2):
@@ -210,7 +216,14 @@ class IssueValidator:
     def _verify_civic_content(self, image_path, claimed_type=None):
         """Verify image contains civic infrastructure using YOLO model."""
         if not self.model:
-            self.checks['content'] = {'status': 'skipped', 'note': 'No AI model loaded'}
+            # Penalize when the AI model is not available so that missing
+            # content verification does not silently result in a high score.
+            self.checks['content'] = {
+                'status': 'skipped',
+                'note': 'No AI model loaded'
+            }
+            # Apply a penalty comparable to the "no civic detected" case.
+            self.penalties.append(30)
             return
         
         try:
