@@ -4,10 +4,13 @@ import os
 import uuid
 from backend.models import db, PotholeReport, GarbageReport
 from backend.utils.issue_validator import get_validator
+from backend.utils.auth import role_required
+
 
 citizen_bp = Blueprint('citizen', __name__)
 
 @citizen_bp.route('/report', methods=['POST'])
+@role_required("citizen")
 def submit_report():
     if 'image' not in request.files:
         return jsonify({'error': 'No image provided'}), 400

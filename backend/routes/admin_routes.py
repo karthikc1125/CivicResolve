@@ -1,10 +1,13 @@
 from flask import Blueprint, jsonify
 from backend.models import PotholeReport, GarbageReport
+from backend.utils.auth import role_required
 
 admin_bp = Blueprint('admin', __name__)
 
 @admin_bp.route('/', methods=['GET'])
+@role_required("admin")
 def admin_index():
+
     """Fixes 404 on /api/admin"""
     return jsonify({
         'message': 'CivicResolve Admin API',
@@ -16,7 +19,9 @@ def admin_index():
     }), 200
 
 @admin_bp.route('/reports', methods=['GET'])
+@role_required("admin")
 def get_all_reports():
+
     potholes = PotholeReport.query.all()
     garbage = GarbageReport.query.all()
     
@@ -26,7 +31,9 @@ def get_all_reports():
     return jsonify(all_reports), 200
 
 @admin_bp.route('/stats', methods=['GET'])
+@role_required("admin")
 def get_stats():
+
     p_count = PotholeReport.query.count()
     g_count = GarbageReport.query.count()
     
