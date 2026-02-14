@@ -1,6 +1,6 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
   title: "CivicResolve Secure",
@@ -22,7 +22,8 @@ export default function RootLayout({
           crossOrigin=""
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased pt-20">
+        <Navbar />
         {children}
       </body>
     </html>
