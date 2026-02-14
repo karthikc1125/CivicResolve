@@ -2,10 +2,12 @@ from flask import Blueprint, request, jsonify, current_app
 from werkzeug.utils import secure_filename
 import os
 from backend.models import db, PotholeReport, GarbageReport
+from backend.utils.auth import role_required
 
 worker_bp = Blueprint('worker', __name__)
 
 @worker_bp.route('/my-tasks/<worker_id>', methods=['GET'])
+@role_required("worker")
 def get_worker_tasks(worker_id):
     p_tasks = PotholeReport.query.filter_by(assigned_worker_id=worker_id, status='assigned').all()
     g_tasks = GarbageReport.query.filter_by(assigned_worker_id=worker_id, status='assigned').all()
@@ -14,6 +16,7 @@ def get_worker_tasks(worker_id):
     return jsonify(tasks), 200
 
 @worker_bp.route('/complete', methods=['POST'])
+@role_required("worker")
 def complete_task():
     file = request.files.get('image')
     rid = request.form.get('id')
