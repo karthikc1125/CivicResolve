@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
+import FeedbackToggle from "@/components/FeedbackToggle";
 
 export const metadata: Metadata = {
   title: "CivicResolve Secure",
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <FeedbackToggle />
       </body>
     </html>
   );
