@@ -836,6 +836,61 @@ const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* About Section */}
+<section className="py-32 px-6 relative z-10 border-t border-violet-500/10 bg-[#030712]/80">
+  <div className="max-w-5xl mx-auto text-center space-y-8">
+    
+    <h2 className="text-5xl font-black tracking-tighter text-white">
+      About <span className="gradient-text-animated">CivicResolve</span>
+    </h2>
+
+    <p className="text-slate-400 text-lg leading-relaxed font-medium">
+      CivicResolve is an AI-powered civic intelligence platform designed to help
+      cities monitor, analyze, and resolve public infrastructure issues such as
+      garbage accumulation, potholes, and maintenance concerns.
+    </p>
+
+    <p className="text-slate-500 text-base leading-relaxed max-w-3xl mx-auto">
+      Citizens and authorized users can report incidents, visualize real-time
+      data on an interactive map, and track resolution progress through a
+      centralized control center. The system leverages neural detection,
+      spatial mapping, and real-time analytics to improve transparency and
+      accelerate civic response.
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-8 pt-12 text-left">
+      
+      <div className="glass-card p-8 rounded-3xl border border-violet-500/10">
+        <h4 className="text-violet-400 font-black uppercase tracking-widest text-xs mb-4">
+          Report
+        </h4>
+        <p className="text-slate-400 text-sm">
+          Submit infrastructure issues with location and category details.
+        </p>
+      </div>
+
+      <div className="glass-card p-8 rounded-3xl border border-violet-500/10">
+        <h4 className="text-cyan-400 font-black uppercase tracking-widest text-xs mb-4">
+          Track
+        </h4>
+        <p className="text-slate-400 text-sm">
+          Monitor status updates and resolution progress in real time.
+        </p>
+      </div>
+
+      <div className="glass-card p-8 rounded-3xl border border-violet-500/10">
+        <h4 className="text-emerald-400 font-black uppercase tracking-widest text-xs mb-4">
+          Resolve
+        </h4>
+        <p className="text-slate-400 text-sm">
+          Enable faster action through structured workflow and analytics.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* Footer */}
       <footer className="py-40 relative z-10 border-t border-violet-500/10 bg-[#030712]/90">
