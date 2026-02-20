@@ -4402,3 +4402,50 @@
 2026-02-17 10:28:50,239 - INFO - 127.0.0.1 - - [17/Feb/2026 10:28:50] "GET / HTTP/1.1" 200 -
 2026-02-17 10:28:50,399 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/favicon.ico', 'status': 404, 'duration_ms': 1.0, 'ip': '127.0.0.1'}
 2026-02-17 10:28:50,400 - INFO - 127.0.0.1 - - [17/Feb/2026 10:28:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-20 10:52:19,794 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2026-02-20 10:52:19,798 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 10:52:19,848 - INFO -  * Restarting with watchdog (windowsapi)
+2026-02-20 10:52:30,152 - WARNING -  * Debugger is active!
+2026-02-20 10:52:30,173 - INFO -  * Debugger PIN: 896-543-030
+2026-02-20 10:54:25,878 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/api/auth/login', 'status': 405, 'duration_ms': 2.0, 'ip': '127.0.0.1'}
+2026-02-20 10:54:25,883 - INFO - 127.0.0.1 - - [20/Feb/2026 10:54:25] "[31m[1mGET /api/auth/login HTTP/1.1[0m" 405 -
+2026-02-20 10:55:33,730 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/favicon.ico', 'status': 404, 'duration_ms': 1.0, 'ip': '127.0.0.1'}
+2026-02-20 10:55:33,732 - INFO - 127.0.0.1 - - [20/Feb/2026 10:55:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-20 10:55:37,394 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/', 'status': 200, 'duration_ms': 0.0, 'ip': '127.0.0.1'}
+2026-02-20 10:55:37,396 - INFO - 127.0.0.1 - - [20/Feb/2026 10:55:37] "GET / HTTP/1.1" 200 -
+2026-02-20 10:55:39,728 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/', 'status': 200, 'duration_ms': 0.0, 'ip': '127.0.0.1'}
+2026-02-20 10:55:39,729 - INFO - 127.0.0.1 - - [20/Feb/2026 10:55:39] "GET / HTTP/1.1" 200 -
+2026-02-20 10:55:44,828 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/api/auth/login', 'status': 405, 'duration_ms': 0.99, 'ip': '127.0.0.1'}
+2026-02-20 10:55:44,829 - INFO - 127.0.0.1 - - [20/Feb/2026 10:55:44] "[31m[1mGET /api/auth/login HTTP/1.1[0m" 405 -
+2026-02-20 10:55:52,604 - INFO - REQUEST_LOG: {'method': 'POST', 'path': '/api/auth/login', 'status': 200, 'duration_ms': 8.62, 'ip': '127.0.0.1'}
+2026-02-20 10:55:52,605 - INFO - 127.0.0.1 - - [20/Feb/2026 10:55:52] "POST /api/auth/login HTTP/1.1" 200 -
+2026-02-20 10:58:00,375 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/api/admin/stats', 'status': 401, 'duration_ms': 1.0, 'ip': '127.0.0.1'}
+2026-02-20 10:58:00,377 - INFO - 127.0.0.1 - - [20/Feb/2026 10:58:00] "[31m[1mGET /api/admin/stats HTTP/1.1[0m" 401 -
+2026-02-20 11:01:13,371 - INFO -  * Detected change in 'C:\\Users\\SHK\\AppData\\Roaming\\Python\\Python311\\site-packages\\flask_cors\\extension.py', reloading
+2026-02-20 11:01:13,458 - INFO -  * Detected change in 'C:\\Users\\SHK\\AppData\\Roaming\\Python\\Python311\\site-packages\\sqlalchemy\\orm\\context.py', reloading
+2026-02-20 11:01:13,554 - INFO -  * Detected change in 'C:\\Users\\SHK\\AppData\\Roaming\\Python\\Python311\\site-packages\\sqlalchemy\\engine\\default.py', reloading
+2026-02-20 11:01:13,654 - INFO - 127.0.0.1 - - [20/Feb/2026 11:01:13] "[35m[1mGET /api/admin/stats HTTP/1.1[0m" 500 -
+2026-02-20 11:01:16,272 - INFO -  * Restarting with watchdog (windowsapi)
+2026-02-20 11:01:28,318 - WARNING -  * Debugger is active!
+2026-02-20 11:01:28,330 - INFO -  * Debugger PIN: 896-543-030
+2026-02-20 11:12:03,845 - INFO - 127.0.0.1 - - [20/Feb/2026 11:12:03] "[35m[1mGET /api/admin/stats HTTP/1.1[0m" 500 -
+2026-02-20 11:12:13,884 - INFO - REQUEST_LOG: {'method': 'POST', 'path': '/api/auth/login', 'status': 200, 'duration_ms': 5.98, 'ip': '127.0.0.1'}
+2026-02-20 11:12:13,888 - INFO - 127.0.0.1 - - [20/Feb/2026 11:12:13] "POST /api/auth/login HTTP/1.1" 200 -
+2026-02-20 11:12:18,534 - INFO - REQUEST_LOG: {'method': 'POST', 'path': '/api/auth/login', 'status': 200, 'duration_ms': 5.0, 'ip': '127.0.0.1'}
+2026-02-20 11:12:18,536 - INFO - 127.0.0.1 - - [20/Feb/2026 11:12:18] "POST /api/auth/login HTTP/1.1" 200 -
+2026-02-20 11:12:45,057 - INFO - 127.0.0.1 - - [20/Feb/2026 11:12:45] "[35m[1mGET /api/admin/stats HTTP/1.1[0m" 500 -
+2026-02-20 11:14:07,154 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2026-02-20 11:14:07,159 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 11:14:07,201 - INFO -  * Restarting with watchdog (windowsapi)
+2026-02-20 11:14:17,723 - WARNING -  * Debugger is active!
+2026-02-20 11:14:17,735 - INFO -  * Debugger PIN: 896-543-030
+2026-02-20 11:15:04,795 - INFO - REQUEST_LOG: {'method': 'POST', 'path': '/api/auth/login', 'status': 200, 'duration_ms': 6.0, 'ip': '127.0.0.1'}
+2026-02-20 11:15:04,797 - INFO - 127.0.0.1 - - [20/Feb/2026 11:15:04] "POST /api/auth/login HTTP/1.1" 200 -
+2026-02-20 11:17:20,764 - INFO - REQUEST_LOG: {'method': 'GET', 'path': '/api/admin/stats', 'status': 200, 'duration_ms': 40.98, 'ip': '127.0.0.1'}
+2026-02-20 11:17:20,766 - INFO - 127.0.0.1 - - [20/Feb/2026 11:17:20] "GET /api/admin/stats HTTP/1.1" 200 -

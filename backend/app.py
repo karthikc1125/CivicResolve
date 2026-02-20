@@ -10,8 +10,10 @@ from flask_cors import CORS
 from backend.config import config
 from backend.models import db
 
+
 # Add project root to path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 
 def create_app(config_name='default'):
     app = Flask(__name__)
@@ -19,8 +21,6 @@ def create_app(config_name='default'):
     # Load Config
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
-    
-    # Extensions
     CORS(app)
     db.init_app(app)
     logging.basicConfig(
@@ -82,7 +82,9 @@ def create_app(config_name='default'):
     from backend.routes.workflow.task_routes import task_bp
     from backend.routes.workflow.worker_routes import worker_bp
     from backend.routes.workflow.verification_routes import verify_bp
-    
+    from backend.routes.auth_routes import auth_bp
+
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(citizen_bp, url_prefix='/api/citizen')
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
@@ -140,6 +142,16 @@ def create_app(config_name='default'):
     # Create Tables
     with app.app_context():
         db.create_all()
+
+        
+    from backend.models import User
+
+    with app.app_context():
+        db.create_all()
+
+        if not User.query.filter_by(username="admin").first():
+            db.session.add(User(username="admin", password="admin", role="admin"))
+            db.session.commit()
         
     return app
 
