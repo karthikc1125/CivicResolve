@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import FeedbackToggle from "../components/FeedbackToggle";
-
+import FeedbackToggle from "@/components/FeedbackToggle";
 
 export const metadata: Metadata = {
   title: "CivicResolve Secure",
