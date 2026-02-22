@@ -468,7 +468,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl xs:text-5xl md:text-[10rem] font-black tracking-tighter leading-[0.9] md:leading-[0.8] mb-8 md:mb-14"
+            className="text-4xl sm:text-5xl md:text-[10rem] font-black tracking-tighter leading-[0.9] md:leading-[0.8] mb-8 md:mb-14"
           >
             <motion.span
               className="text-white text-glow inline-block"
